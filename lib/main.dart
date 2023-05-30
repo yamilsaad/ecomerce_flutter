@@ -1,4 +1,6 @@
+import 'package:ecomerce_flutter/screens/carrito_screen.dart';
 import 'package:ecomerce_flutter/screens/home_screen.dart';
+import 'package:ecomerce_flutter/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +17,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/home',
       routes: {
         '/home': (context) => const HomeScreen(),
+        'carrito': (context) => const CarritoScreen(),
       },
+      theme: AppThemes.lightTheme,
+      darkTheme: AppThemes.darkTheme,
+      themeMode: ThemeMode.system,
     );
   }
 }
