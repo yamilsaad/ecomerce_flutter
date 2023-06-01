@@ -12,6 +12,15 @@ class OfertaToday extends StatelessWidget {
       height: 100,
       decoration: BoxDecoration(
           color: Colors.amber, borderRadius: BorderRadius.circular(10)),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+            child: Text(
+          'Oferta off % toDay',
+          style: TextStyle(
+              color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold),
+        )),
+      ),
     );
   }
 }

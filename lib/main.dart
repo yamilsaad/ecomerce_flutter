@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/home',
       routes: {
         '/home': (context) => const HomeScreen(),
-        'carrito': (context) => const CarritoScreen(),
+        'carrito': (context) => CarritoScreen(key: UniqueKey()),
       },
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,

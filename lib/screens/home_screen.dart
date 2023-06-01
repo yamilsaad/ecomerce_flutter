@@ -43,7 +43,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          SizedBox(
+            width: 45,
+          ),
+          Center(
+              child: Text(
+            'Mercado Cuyo',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          )),
           const Spacer(),
+
           cartButton
               .cartButton(context), //Carrito de compra. Icono. Usar Provider!
           //const AvatarAppbar(), //Avatar del AppBar
