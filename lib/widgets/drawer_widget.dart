@@ -3,6 +3,8 @@ import 'package:shimmer/shimmer.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:animated_loading_border/animated_loading_border.dart';
 
+import '../screens/screens.dart';
+
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({
     Key? key,
@@ -40,62 +42,113 @@ class DrawerWidget extends StatelessWidget {
               height: 10,
             ),
             ListTile(
-              leading: const Icon(Icons.home),
-              title: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'My home',
-                    style: _textStyle,
-                  )),
-              //trailing: const Icon(Icons.arrow_forward_ios),
+              leading: Icon(Icons.home),
+              title: Row(
+                children: [
+                  SizedBox(width: 10.0),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'My home',
+                      style: _textStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const Divider(
+              height: 2,
+            ),
+            ListTile(
+              leading: Icon(Icons.help_outline),
+              title: Row(
+                children: [
+                  SizedBox(width: 10.0),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Soporte',
+                      style: _textStyle,
+                    ),
+                  ),
+                ],
+              ),
             ),
             const Divider(
               height: 2,
             ),
             ListTile(
-              leading: const Icon(Icons.help_outline),
-              title: TextButton(
-                  onPressed: () {}, child: Text('Soporte', style: _textStyle)),
-              //trailing: const Icon(Icons.arrow_forward_ios),
+              leading: Icon(Icons.notifications),
+              title: Row(
+                children: [
+                  SizedBox(width: 10.0),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Notificaciones',
+                      style: _textStyle,
+                    ),
+                  ),
+                ],
+              ),
             ),
             const Divider(
               height: 2,
             ),
             ListTile(
-              leading: const Icon(Icons.notification_important),
-              title: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Notificaciones',
-                    style: _textStyle,
-                  )),
-              //trailing: const Icon(Icons.arrow_forward_ios),
+              leading: Icon(Icons.shopping_bag_outlined),
+              title: Row(
+                children: [
+                  SizedBox(width: 10.0),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Mis compras',
+                      style: _textStyle,
+                    ),
+                  ),
+                ],
+              ),
             ),
             const Divider(
               height: 2,
             ),
             ListTile(
-              leading: const Icon(Icons.shopping_bag_outlined),
-              title: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Mis Compras',
-                    style: _textStyle,
-                  )),
-              //trailing: const Icon(Icons.arrow_forward_ios),
+              leading: Icon(Icons.settings),
+              title: Row(
+                children: [
+                  SizedBox(width: 10.0),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Ajustes',
+                      style: _textStyle,
+                    ),
+                  ),
+                ],
+              ),
             ),
             const Divider(
               height: 2,
             ),
             ListTile(
-              leading: const Icon(Icons.settings_applications),
-              title: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Ajustes',
+              leading: Icon(Icons.add_business),
+              title: Row(
+                children: [
+                  SizedBox(width: 10.0),
+                  Text(
+                    'Agregar Producto',
                     style: _textStyle,
-                  )),
-              //trailing: const Icon(Icons.arrow_forward_ios),
+                  ),
+                ],
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductFormScreen()),
+                );
+              },
             ),
             const Divider(
               height: 2,
@@ -105,21 +158,31 @@ class DrawerWidget extends StatelessWidget {
                 Icons.wallet_giftcard,
                 color: Colors.green,
               ),
-              title: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Mis puntos',
-                    style: _textStyle,
-                  )),
-              subtitle: const Center(
-                  child: Text(
-                '3000',
-                style: TextStyle(color: Colors.green),
-              )),
+              title: Row(
+                children: [
+                  SizedBox(width: 10.0),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Mis puntos',
+                      style: _textStyle,
+                    ),
+                  ),
+                ],
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(left: 33.0),
+                child: Text(
+                  '3000',
+                  style: TextStyle(color: Colors.green),
+                ),
+              ),
               subtitleTextStyle: TextStyle(
-                  color: Colors.green[400], fontWeight: FontWeight.w500),
-              //trailing: Icon(Icons.star,color: Colors.orange[400],),
+                color: Colors.green[400],
+                fontWeight: FontWeight.w500,
+              ),
             ),
+
             const Divider(
               height: 2,
             ),

@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ecomerce_flutter/providers/providers.dart';
+import 'package:ecomerce_flutter/models/model.dart';
 
-class CarritoScreen extends StatefulWidget {
-  const CarritoScreen({required Key key}) : super(key: key);
+class CarritoScreen extends StatelessWidget {
+  final List<CartModel> cartItems;
 
-  @override
-  State<CarritoScreen> createState() => _CarritoScreenState();
-}
-
-class _CarritoScreenState extends State<CarritoScreen> {
-  List<Item> carritoItems = []; // Declara y define la lista carritoItems
-  List<Item> itemsGuardados = []; // Declara y define la lista itemsGuardados
+  const CarritoScreen({Key? key, required this.cartItems}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Carrito'),
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
+        title: const Text('Carrito'),
       ),
       body: DefaultTabController(
-        length: 2, // Número de pestañas
+        length: 2,
         child: Column(
           children: [
             const SizedBox(height: 15),
@@ -30,8 +25,7 @@ class _CarritoScreenState extends State<CarritoScreen> {
                   child: Text(
                     'Carrito',
                     style: TextStyle(
-                      color:
-                          Colors.indigo, // Cambia el color del texto a indigo
+                      color: Colors.indigo,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -41,8 +35,7 @@ class _CarritoScreenState extends State<CarritoScreen> {
                   child: Text(
                     'Guardados',
                     style: TextStyle(
-                      color:
-                          Colors.indigo, // Cambia el color del texto a indigo
+                      color: Colors.indigo,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -56,15 +49,19 @@ class _CarritoScreenState extends State<CarritoScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      child: ListView.builder(
-                        itemCount: carritoItems
-                            .length, // Número de elementos en el carrito
-                        itemBuilder: (BuildContext context, int index) {
-                          final item = carritoItems[
-                              index]; // Obtener el artículo actual del carrito
-                          return ListTile(
-                            title: Text(item.nombre),
-                            subtitle: Text(item.precio.toString()),
+                      child: Consumer<CartProvider>(
+                        builder: (context, cartProvider, _) {
+                          final cartItems = cartProvider.cartItems;
+
+                          return ListView.builder(
+                            itemCount: cartItems.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              final item = cartItems[index];
+                              return ListTile(
+                                title: Text(item.productName),
+                                subtitle: Text(item.price.toString()),
+                              );
+                            },
                           );
                         },
                       ),
@@ -73,18 +70,7 @@ class _CarritoScreenState extends State<CarritoScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      child: ListView.builder(
-                        itemCount: itemsGuardados
-                            .length, // Número de elementos guardados
-                        itemBuilder: (BuildContext context, int index) {
-                          final item = itemsGuardados[
-                              index]; // Obtener el artículo guardado actual
-                          return ListTile(
-                            title: Text(item.nombre),
-                            subtitle: Text(item.precio.toString()),
-                          );
-                        },
-                      ),
+                      child: Text('Guardados'),
                     ),
                   ),
                 ],
@@ -95,12 +81,4 @@ class _CarritoScreenState extends State<CarritoScreen> {
       ),
     );
   }
-}
-
-// Clase de ejemplo para representar un artículo en el carrito
-class Item {
-  final String nombre;
-  final double precio;
-
-  Item({required this.nombre, required this.precio});
 }

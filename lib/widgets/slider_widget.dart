@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 
-class SliderOfertas extends StatelessWidget {
+class ProductSlider {
+  final String title;
+  final String imageUrl;
+  final double price;
+
+  ProductSlider(this.title, this.imageUrl, this.price);
+}
+
+class SliderOfertas extends StatefulWidget {
   const SliderOfertas({
     super.key,
   });
 
+  @override
+  State<SliderOfertas> createState() => _SliderOfertasState();
+}
+
+class _SliderOfertasState extends State<SliderOfertas> {
   @override
   Widget build(BuildContext context) {
     final Size customSize = Size(400, 200);

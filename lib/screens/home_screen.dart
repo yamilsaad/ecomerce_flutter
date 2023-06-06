@@ -102,13 +102,17 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 10),
               OfertaToday(), //un contenedor con la oferta del día.
               SizedBox(height: 10),
+              SubtitleRecientes(),
               VistoReciente(), //slider de cards con lo visto mas reciente.
-              SizedBox(height: 10),
+              SizedBox(height: 25),
+              SubtitleVistos(),
               SimilarProducts(),
               SizedBox(height: 10),
               OfertaToday(),
               SizedBox(height: 10),
               ContainerPuntos(),
+              SizedBox(height: 10),
+              TusPuntosContainer(),
               SizedBox(height: 10),
             ],
           ),
