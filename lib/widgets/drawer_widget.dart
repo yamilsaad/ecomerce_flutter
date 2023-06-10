@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -186,6 +187,23 @@ class DrawerWidget extends StatelessWidget {
             const Divider(
               height: 2,
             ),
+            ListTile(
+              leading: Icon(Icons.output_outlined),
+              title: Row(
+                children: [
+                  Text(
+                    'Cerrar Sesión',
+                    style: _textStyle,
+                  )
+                ],
+              ),
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
+              },
+            ),
+            Divider(height: 2)
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:ecomerce_flutter/screens/register_screen.dart';
 import 'package:ecomerce_flutter/screens/screens.dart';
 import 'package:ecomerce_flutter/screens/home_screen.dart';
 import 'package:ecomerce_flutter/themes/themes.dart';
@@ -6,10 +7,13 @@ import 'package:ecomerce_flutter/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const MyApp());
 }
@@ -20,13 +24,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider.value(value: CartProvider())],
+      providers: [
+        ChangeNotifierProvider.value(value: CartProvider()),
+        ChangeNotifierProvider.value(value: LoginFormProvider())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'E comerce',
-        initialRoute: '/home',
+        initialRoute: '/login',
         routes: {
-          '/home': (context) => const HomeScreen(),
+          '/login': (context) => const LoginScreen(),
+          'register': (context) => const RegisterScreen(),
+          'home': (context) => const HomeScreen(),
           'carrito': (context) =>
               CarritoScreen(key: UniqueKey(), cartItems: []),
           'tienda_uno': (context) => TiendaUno(key: UniqueKey()),

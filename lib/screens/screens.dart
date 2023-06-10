@@ -8,3 +8,4 @@ export 'package:ecomerce_flutter/screens/tiendaSiete_screen.dart';
 export 'package:ecomerce_flutter/screens/tiendaOcho_screen.dart';
 export 'package:ecomerce_flutter/screens/carrito_screen.dart';
 export 'package:ecomerce_flutter/screens/carga_streen.dart';
+export 'package:ecomerce_flutter/screens/login_screen.dart';
